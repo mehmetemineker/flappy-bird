@@ -52,6 +52,13 @@ while running:
                 gamestarted = False
                 sprites.empty()
                 bird, game_start_message, score = create_sprites()
+            # Add retry functionality by pressing the 'r' key.
+            if event.key == pygame.K_r and gameover:
+                gameover = False
+                gamestarted = True
+                sprites.empty()
+                bird, _, score = create_sprites()
+                pygame.time.set_timer(column_create_event, 1500)
 
         bird.handle_event(event)
 

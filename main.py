@@ -57,7 +57,11 @@ while running:
                 gameover = False
                 gamestarted = True
                 sprites.empty()
-                bird, _, score = create_sprites()
+                bird, new_game_start_message, score = create_sprites()
+                # Update the `game_start_message` variable when the game is restarted.
+                game_start_message = new_game_start_message
+                # Remove the `game_start_message` sprite when the game is restarted.
+                game_start_message.kill()
                 pygame.time.set_timer(column_create_event, 1500)
 
         bird.handle_event(event)

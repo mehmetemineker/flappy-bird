@@ -53,7 +53,8 @@ while running:
                 sprites.empty()
                 bird, game_start_message, score = create_sprites()
 
-        bird.handle_event(event)
+        if not gameover:
+            bird.handle_event(event)
 
     screen.fill(0)
 

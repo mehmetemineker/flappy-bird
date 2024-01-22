@@ -11,6 +11,10 @@ from objects.gamestart_message import GameStartMessage
 from objects.score import Score
 
 pygame.init()
+pygame.joystick.init()
+
+
+joystick = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
 
 screen = pygame.display.set_mode((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
 
@@ -50,15 +54,26 @@ while running:
         if event.type == column_create_event:
             Column(sprites)
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE and not gamestarted and not gameover:
+            if event.key == pygame.K_SPACE  and not gamestarted and not gameover:
                 gamestarted = True
                 game_start_message.kill()
                 pygame.time.set_timer(column_create_event, 1500)
-            if event.key == pygame.K_ESCAPE and gameover:
+            if event.key == pygame.K_ESCAPE  and gameover:
                 gameover = False
                 gamestarted = False
                 sprites.empty()
                 bird, game_start_message, score = create_sprites()
+        if event.type == pygame.JOYBUTTONDOWN:
+            if event.button == 1 and not gamestarted and not gameover:
+                gamestarted = True
+                game_start_message.kill()
+                pygame.time.set_timer(column_create_event, 1500)
+            if event.button == 6 and gameover:
+                gameover = False
+                gamestarted = False
+                sprites.empty()
+                bird, game_start_message, score = create_sprites()
+
 
         if not gameover:
             bird.handle_event(event)

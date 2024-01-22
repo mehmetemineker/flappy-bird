@@ -41,6 +41,10 @@ class Bird(pygame.sprite.Sprite):
             self.flap = 0
             self.flap -= 6
             assets.play_audio("wing")
+        if event.type == pygame.JOYBUTTONDOWN and event.button == 1:
+            self.flap = 1
+            self.flap -= 7
+            assets.play_audio("wing")
 
     def check_collision(self, sprites):
         for sprite in sprites:

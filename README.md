@@ -6,7 +6,7 @@ This project contains a Flappy Bird game developed using the Python programming 
 
 ## Play now, right now! :grinning:
 
-https://mehmetemineker.github.io/flappy-bird/
+[https://mehmetemineker.github.io/flappy-bird/](https://mehmetemineker.github.io/flappy-bird/)
 
 ## Gameplay
 

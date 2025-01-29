@@ -37,7 +37,7 @@ class Bird(pygame.sprite.Sprite):
             self.rect.x += 3
 
     def handle_event(self, event):
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+        if (event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE) or (event.type == pygame.MOUSEBUTTONDOWN and event.button == 1):
             self.flap = 0
             self.flap -= 6
             assets.play_audio("wing")

@@ -49,19 +49,21 @@ while running:
             running = False
         if event.type == column_create_event:
             Column(sprites)
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE and not gamestarted and not gameover:
+
+        if not gameover:
+            bird.handle_event(event)
+        
+
+        if (event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE) or (event.type == pygame.MOUSEBUTTONDOWN and event.button == 1): # Space bar or Left Mouse click
+            if not gamestarted and not gameover:
                 gamestarted = True
                 game_start_message.kill()
                 pygame.time.set_timer(column_create_event, 1500)
-            if event.key == pygame.K_ESCAPE and gameover:
+            if gameover:
                 gameover = False
                 gamestarted = False
                 sprites.empty()
                 bird, game_start_message, score = create_sprites()
-
-        if not gameover:
-            bird.handle_event(event)
 
     screen.fill(0)
 
